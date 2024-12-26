@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+#open file
 file_name = 'input.txt'
 file = open(file_name,mode='r')
     
@@ -24,6 +25,9 @@ def isSafe(report):
     elif report[0]<report[1]:
         return isSafeAs(report)
     return False
+
+
+#---------------------------- Part 2 ----------------------------
 
 def isSafeDesPart2(report):
     for i in range(len(report)-1):

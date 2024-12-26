@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
+#Open file
 file_name = 'input.txt'
 file = open(file_name,mode='r')
 
+#Read file
 m = []
 for line in file:
     m.append(line.strip())
@@ -37,36 +39,32 @@ for i in range(len(m)):
     for j in range(len(m[i])):
         if m[i][j]=='X' and i>=3:
             if findUp(m,i,j):
-                #print('Up en i: ',i,' j: ',j)
                 total += 1
             if j>=3:
                 if findUpLeft(m,i,j):
-                    #print('UpLeft en i: ',i,' j: ',j)
                     total += 1
             if j<len(m[i])-3:
                 if findUpRigth(m,i,j):
-                    #print('UpRigth en i: ',i,' j: ',j)
                     total += 1
         if m[i][j]=='X' and i<len(m)-3:
             if findDown(m,i,j):
-                #print('Down en i: ',i,' j: ',j)
                 total += 1
             if j>=3:
                 if findDownLeft(m,i,j):
-                    #print('DownLeft en i: ',i,' j: ',j)
                     total += 1
             if j<len(m[i])-3:
                 if findDownRigth(m,i,j):
-                    #print('DownRigth en i: ',i,' j: ',j)
                     total += 1
         if m[i][j]=='X' and j>=3:
             if findLeft(m,i,j):
-                #print('Left en i: ',i,' j: ',j)
                 total += 1
         if m[i][j]=='X' and j<len(m[i])-3:
             if findRigth(m,i,j):
-                #print('Rigth en i: ',i,' j: ',j)
                 total += 1
+
+#print(total)
+
+#---------------------------- Part 2 ----------------------------
 
 def findMAS(m,i,j):
     mas = 0

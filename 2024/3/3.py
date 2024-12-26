@@ -1,46 +1,44 @@
 # -*- coding: utf-8 -*-
+
+#open file
 file_name = 'input.txt'
 file = open(file_name,mode='r')
 
+#read file
 instructions = ''
 for line in file:
-    instructions += line
+    instructions += line.strip()
 
 
-#Primera Parte
 def totalSum(s):
     total = 0
+    #a valid mul has, at max, two 3-digit numbers, a ',' and a ')'
     posiblesMuls = [x[:8] for x in s.split('mul(')]
-    #print(posiblesMuls)
     
     for posibleMul in posiblesMuls:
-        #print(posibleMul)
-        sinParentesis = posibleMul.split(')')
-        #print('sinParentesis = ', sinParentesis)
-        if len(sinParentesis) == 1:
-            #print('invalido')
+        wo_parentheses = posibleMul.split(')')
+        if len(wo_parentheses) == 1:  
+            #if the parentheses is not closed
             continue
-        sinParentesis = sinParentesis[0]
-        numeros = sinParentesis.split(',',1)
-        #print('numeros = ', numeros)
-        if len(numeros) != 2:
-            #print('invalido')
+        #remove the rest
+        wo_parentheses = wo_parentheses[0]
+        numbers = wo_parentheses.split(',',1)
+        if len(numbers) != 2:
+            #abscent or ilegal coma
             continue
         try:
-            num1 = int(numeros[0])
-            num2 = int(numeros[1])
+            num1 = int(numbers[0])
+            num2 = int(numbers[1])
         except:
-            #print('invalido')
             continue
         else:
-            #print('num1 = ', num1, 'num2 = ', num2)
             total += num1*num2
     return total
         
 #print(totalSum(instructions))
 
+#---------------------------- Part 2 ----------------------------
 
-#Segunda Parte
 total = 0
 mulEnable = instructions.split('do()')
 withoutDont = [x.split("don't()")[0] for x in mulEnable]

@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 
+#open file
 file_name = 'input.txt'
 file = open(file_name,mode='r')
     
-    
+#read file
 l1 = []
 l2 = []
 for line in file:
@@ -26,11 +27,13 @@ def primera_parte(l1, l2):
     dif = np.abs(l1-l2)
     return(np.sum(dif))
 
+#---------------------------- Part 2 ----------------------------
+
 def segunda_parte(l1,l2):
     similarity_score = 0
     for x in l1:
-        apariciones = l2.count(x) 
-        similarity_score += x*apariciones
+        count = l2.count(x) 
+        similarity_score += x*count
     return similarity_score
         
 print(segunda_parte(l1, l2))
